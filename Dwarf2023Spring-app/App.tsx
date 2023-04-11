@@ -11,20 +11,23 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        <Login></Login>
+        {/* <Login></Login>
         <Signup></Signup>
-        <Counter></Counter>
-        {/* <Problems></Problems> */}
+        <Counter></Counter> */}
+        <Problems></Problems>
+        <StatusBar style="auto" />
       </View>
     </Provider>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 40,
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });

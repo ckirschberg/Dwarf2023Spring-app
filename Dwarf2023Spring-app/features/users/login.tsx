@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { AppDispatch, RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native'
-import { login, signup } from './usersSlice'
+import { login, reloadToken, signup } from './usersSlice'
 import { UsersEntity } from './usersEntity'
+import * as SecureStore from 'expo-secure-store';
 
 export function Login() {
-  const token: string | undefined = useSelector((state: RootState) => state.users.token)
+  const token: string | undefined | null = useSelector((state: RootState) => state.users.token)
   const error: string | undefined = useSelector((state: RootState) => state.users.error)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -18,6 +19,17 @@ export function Login() {
 
     dispatch(login(new UsersEntity(username, password)));
   }
+
+  useEffect( () => {
+    const bootstrapAsync = async () => {
+      const token = await SecureStore.getItemAsync('token');
+      console.log("read token from secure storage", token);
+      dispatch(reloadToken(token));
+    }
+
+    bootstrapAsync();
+  }, [])
+
 
   return (
       <View>
