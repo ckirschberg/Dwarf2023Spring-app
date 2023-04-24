@@ -33,7 +33,7 @@ export function Picture(props) {
       data.append('file', fileToUpload);
       try {
         // get ip on mac: ipconfig getifaddr en0
-        const yourIP = '192.168.0.105'
+        const yourIP = '10.55.130.87'
         let res = await fetch(
           "http://"+yourIP+":3003/problems/image",
           {
@@ -54,7 +54,7 @@ export function Picture(props) {
 
   let takePic = async () => {
     let options = {
-      quality: 0.1,
+      quality: 0.1, // 0.1  to 1
       base64: true,
       exif: false
     };

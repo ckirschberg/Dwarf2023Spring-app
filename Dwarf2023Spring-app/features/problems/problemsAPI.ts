@@ -9,7 +9,10 @@ export class ProblemsAPI {
         try {
             console.log("sending data", problem);
             
-            const result = await axios.post("http://" + this.myIp + ':3003/problems', {data: problem, headers: { "Content-Type": "multipart/form-data" }});
+            const result = await axios.post("http://" + this.myIp + ':3003/problems', {
+                data: problem, 
+                headers: { "Content-Type": "multipart/form-data" }
+            });
             return result.data;
         }
         catch(error) {

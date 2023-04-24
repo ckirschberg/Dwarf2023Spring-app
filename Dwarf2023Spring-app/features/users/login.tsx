@@ -7,7 +7,7 @@ import { UsersEntity } from './usersEntity'
 import * as SecureStore from 'expo-secure-store';
 
 export function Login() {
-  const token: string | undefined = useSelector((state: RootState) => state.users.token)
+  const token: string | undefined | null = useSelector((state: RootState) => state.users.token)
   const error: string | undefined = useSelector((state: RootState) => state.users.error)
   const dispatch = useDispatch<AppDispatch>()
 

@@ -11,8 +11,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <View style={styles.container}>
-        {/* <Login></Login>
-        <Signup></Signup>
+         <Login></Login>
+        {/*<Signup></Signup>
         <Counter></Counter> */}
         <Problems></Problems>
       </View>
