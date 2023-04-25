@@ -6,17 +6,31 @@ import { Problems } from './features/problems/problems';
 import { Login } from './features/users/login';
 import { Signup } from './features/users/signup';
 import { store } from './store'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import { Todos } from './features/todos/todos';
+
+// Create a client
+const queryClient = new QueryClient()
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <View style={styles.container}>
-         <Login></Login>
-        {/*<Signup></Signup>
-        <Counter></Counter> */}
-        <Problems></Problems>
-      </View>
-    </Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>
+        <View style={styles.container}>
+          {/* <Login></Login> */}
+          {/*<Signup></Signup>
+          <Counter></Counter> */}
+          {/* <Problems></Problems> */}
+          <Todos></Todos>
+        </View>
+      </Provider>
+    </QueryClientProvider>
   );
 }
 
